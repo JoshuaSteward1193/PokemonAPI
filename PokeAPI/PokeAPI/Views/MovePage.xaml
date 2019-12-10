@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PokeAPI.Views.MovePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout BackgroundColor="{StaticResource PokemonNavy}">
+                <Label Text="{Binding Title}" 
+                       TextColor="White"
+                       FontSize="Title"
+                       FontAttributes="Bold"
+                       HorizontalOptions="StartAndExpand"
+                       VerticalOptions="Center"
+                       Margin="10"/>
+            </StackLayout>
+            <CollectionView ItemsSource="{Binding Moves}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Spacing="8"
+                                     Padding="8">
+                            <Label Text="{Binding name}"
+                                   FontAttributes="Bold"/>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Power Points: "/>
+                                        <Span Text="{Binding pp}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Accuracy: "/>
+                                        <Span Text="{Binding accuracy}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <BoxView HeightRequest="2"
+                                     Color="{StaticResource PokemonNavy}"/>
+
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

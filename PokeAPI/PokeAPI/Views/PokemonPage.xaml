@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PokeAPI.Views.PokemonPage"
+             Title="Pokemon"
+             x:Name="BrowsePokemonPage">
+             
+    <ContentPage.Content>
+        <StackLayout>
+        <StackLayout BackgroundColor="{StaticResource PokemonNavy}">
+            <Label Text="{Binding Title}" 
+                       TextColor="White"
+                       FontSize="Title"
+                       FontAttributes="Bold"
+                       HorizontalOptions="StartAndExpand"
+                       VerticalOptions="Center"
+                       Margin="10"/>
+        </StackLayout>
+        <CollectionView ItemsSource="{Binding Pokemon}" >
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Spacing="8"
+                                 Padding="8">
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="ID: " FontAttributes="Bold" />
+                                    <Span Text="{Binding id}" />
+                                    <Span Text=" - " />
+                                    <Span Text="{Binding name}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>                        
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding name}"/>
+                                    <Span Text=" is of the "/>
+                                    <Span Text="{Binding types[0].type.name}"/>
+                                    <Span Text=" type."/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Image Source="{Binding sprites.front_default}"/>
+                        <BoxView HeightRequest="2"
+                                 Color="{StaticResource PokemonNavy}"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
